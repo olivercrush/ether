@@ -10,11 +10,8 @@ pkg_check_modules(GLFW3 REQUIRED glfw3)
 pkg_check_modules(GLEW REQUIRED glew)
 pkg_check_modules(CGLM REQUIRED cglm)
 
-add_executable(game-engine
-    src/main.c
-    src/shader.c
-    src/dds.c
-)
+file(GLOB SOURCES src/*c)
+add_executable(game-engine ${SOURCES})
 
 target_include_directories(game-engine PRIVATE
     include
