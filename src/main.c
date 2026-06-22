@@ -6,6 +6,7 @@
 #include "mvp_matrix.h"
 #include "shader.h"
 #include "dds.h"
+#include "transform.h"
 
 const int WIDTH = 1024;
 const int HEIGHT = 768;
@@ -138,7 +139,15 @@ int main() {
     mvp_matrix *mvp_matrix = mvp_matrix_make();
     glm_perspective(glm_rad(45.0f), (float) WIDTH / (float) HEIGHT, 0.1f, 100.0f, *mvp_matrix->projection_matrix);
     glm_lookat((vec3) { 4.0f, 3.0f, 3.0f }, (vec3) { 0.0f, 0.0f, 0.0f }, (vec3) { 0.0f, 1.0f, 0.0f }, *mvp_matrix->view_matrix);
-    glm_mat4_identity(*mvp_matrix->model_matrix);
+
+    Transform transform = {
+        { 0.0f, 0.0f, 0.0f },
+        { 0.0f, 0.0f, 0.0f },
+        { 0.0f, 0.0f, 0.0f }
+    };
+    mat4 model;
+    transform_to_mat4(&transform, *mvp_matrix->model_matrix);
+
     mvp_matrix_compute(mvp_matrix);
 
     GLuint matrix_id = glGetUniformLocation(programID, "MVP");
