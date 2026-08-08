@@ -1,3 +1,4 @@
+#pragma once
 #include <cglm/cglm.h>
 
 typedef struct Transform {
@@ -6,4 +7,4 @@ typedef struct Transform {
     vec3 scale;
 } Transform;
 
-void transform_to_mat4(Transform *t, mat4 dest);
+void transform_to_model(Transform* t, mat4* dest);

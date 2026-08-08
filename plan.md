@@ -197,4 +197,4 @@ int main() {
 6. `scene.h` / `scene.c` — depends on entity, camera
 7. Rewrite `main.c` using the above
 8. Remove `mvp_matrix.h` / `mvp_matrix.c`
-9. Update `CMakeLists.txt`
+9. Update `CMakeLists.txt`  

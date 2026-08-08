@@ -1,6 +1,4 @@
-#ifndef DDS_H
-#define DDS_H
-
+#pragma once
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -9,5 +7,3 @@
 #define FOURCC_DXT5 0x35545844 // Equivalent to "DXT5" in ASCII
 
 GLuint load_dds(const char* image_path);
-
-#endif
