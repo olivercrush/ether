@@ -1,11 +1,13 @@
 #include "renderer.h"
 #include <cglm/cglm.h>
 #include <cglm/mat4.h>
+#include "camera.h"
 #include "transform.h"
 #include "material.h"
 
-void render(Scene *scene, Camera *camera, GLFWwindow *window) {
+void render(Scene *scene, Camera *camera, GLFWwindow *window, float delta_time) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    camera_compute_from_inputs(camera, window, delta_time);
 
     for (int i = 0; i < scene->count; i++) {
         material_bind(scene->objects[i].material);

@@ -5,4 +5,4 @@
 #include "scene.h"
 #include "camera.h"
 
-void render(Scene* scene, Camera* camera, GLFWwindow* window);
+void render(Scene* scene, Camera* camera, GLFWwindow* window, float delta_time);
