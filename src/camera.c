@@ -25,8 +25,8 @@ void camera_compute_from_inputs(Camera *camera, GLFWwindow* window, float delta_
     glfwGetCursorPos(window, &xpos, &ypos);
     glfwSetCursorPos(window, (float) camera->screen_width/2, (float) camera->screen_height/2);
 
-    camera->horizontal_angle += camera->mouse_speed * delta_time * ((float) camera->screen_width/2 - xpos);
-    camera->vertical_angle += camera->mouse_speed * delta_time * ((float) camera->screen_height/2 - ypos);
+    camera->horizontal_angle += camera->mouse_speed * ((float) camera->screen_width/2 - xpos);
+    camera->vertical_angle += camera->mouse_speed * ((float) camera->screen_height/2 - ypos);
 
     vec3 direction = { 
         cos(camera->vertical_angle) * sin(camera->horizontal_angle),
