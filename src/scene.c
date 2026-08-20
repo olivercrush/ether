@@ -1,4 +1,5 @@
 #include "scene.h"
+#include "gameobject.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -21,7 +22,7 @@ void scene_destroy(Scene *s) {
     if (s == NULL) return;
 
     for (int i = 0; i < s->count; i++)
-        game_object_cleanup(&s->objects[i]);
+        game_object_destroy(&s->objects[i]);
 
     free(s->objects);
     free(s);

@@ -6,10 +6,8 @@
 typedef struct GameObject {
     Transform transform;
     Mesh* mesh;
-    Material material;
+    Material* material;
 } GameObject;
 
-GameObject game_object_create(Transform transform, Mesh* mesh, Material material);
-GameObject game_object_cube_create(Transform transform, Mesh* mesh);
-void game_object_cleanup(GameObject* o);
+GameObject game_object_create(Transform transform, Mesh* mesh, Material* material);
 void game_object_destroy(GameObject* o);

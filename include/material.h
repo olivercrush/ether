@@ -9,6 +9,6 @@ typedef struct Material {
     GLint sampler_location;
 } Material;
 
-Material material_create(char vertex_shader_path[], char fragment_shader_path[], char texture_path[]);
-void material_bind(Material m);
-void material_destroy(Material m);
+Material* material_create(char vertex_shader_path[], char fragment_shader_path[], char texture_path[]);
+void material_bind(Material* m);
+void material_destroy(Material* m);

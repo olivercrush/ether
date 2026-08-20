@@ -4,6 +4,7 @@
 #include <cglm/types.h>
 #include <cglm/cglm.h>
 #include "init.h"
+#include "material.h"
 #include "mesh.h"
 #include "renderer.h"
 #include "transform.h"
@@ -26,11 +27,12 @@ int main() {
     Transform transform_4 = {{ 5.0f, 3.0f, 5.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f }};
 
     Mesh* mesh = mesh_cube_create();
+    Material* material = material_create("src/vertex.vertexshader", "src/fragment.fragmentshader", "src/uvtemplate.DDS");
     GameObject objects[] = {
-        game_object_cube_create(transform_1, mesh),
-        game_object_cube_create(transform_2, mesh),
-        game_object_cube_create(transform_3, mesh),
-        game_object_cube_create(transform_4, mesh)
+        game_object_create(transform_1, mesh, material),
+        game_object_create(transform_2, mesh, material),
+        game_object_create(transform_3, mesh, material),
+        game_object_create(transform_4, mesh, material)
     };
 
     Scene* scene = scene_create(objects, sizeof(objects)/sizeof(objects[0]));
@@ -48,6 +50,7 @@ int main() {
 
     scene_destroy(scene);
     mesh_destroy(mesh);
+    material_destroy(material);
 
 	glfwTerminate();
     return 0;
