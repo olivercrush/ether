@@ -17,8 +17,8 @@ void render(Scene *scene, Camera *camera, GLFWwindow *window, float delta_time) 
         glm_mat4_mulN((mat4* []){ &camera->projection, &camera->view, &model }, 3, mvp);
 
         glUniformMatrix4fv(scene->objects[i].material.mvp_location, 1, GL_FALSE, *mvp);
-        glBindVertexArray(scene->objects[i].mesh.vertex_array);
-        glDrawArrays(GL_TRIANGLES, 0, scene->objects[i].mesh.vertex_count);
+        glBindVertexArray(scene->objects[i].mesh->vertex_array);
+        glDrawArrays(GL_TRIANGLES, 0, scene->objects[i].mesh->vertex_count);
     }
 
     glfwSwapBuffers(window);

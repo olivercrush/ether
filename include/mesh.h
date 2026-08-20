@@ -9,5 +9,6 @@ typedef struct Mesh {
     size_t vertex_count;
 } Mesh;
 
-Mesh mesh_create(const GLfloat *v_data, size_t v_count, const GLfloat *u_data, size_t u_count);
-void mesh_destroy(Mesh m);
+Mesh* mesh_create(const GLfloat *v_data, size_t v_count, const GLfloat *u_data, size_t u_count);
+Mesh* mesh_cube_create();
+void mesh_destroy(Mesh* m);

@@ -55,6 +55,12 @@ void camera_compute_from_inputs(Camera *camera, GLFWwindow* window, float delta_
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
         glm_vec3_muladds(right, -delta_time * camera->speed, camera->position);
 
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        glm_vec3_muladds(up, delta_time * camera->speed, camera->position);
+
+    if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+        glm_vec3_muladds(up, -delta_time * camera->speed, camera->position);
+
     vec3 target;
     glm_vec3_add(camera->position, direction, target);
     glm_lookat(camera->position, target, up, camera->view);

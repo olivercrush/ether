@@ -4,6 +4,7 @@
 #include <cglm/types.h>
 #include <cglm/cglm.h>
 #include "init.h"
+#include "mesh.h"
 #include "renderer.h"
 #include "transform.h"
 #include "scene.h"
@@ -24,11 +25,12 @@ int main() {
     Transform transform_3 = {{ 0.0f, 0.0f, -5.0f }, { 0.0f, 0.0f, 0.0f }, { 2.0f, 2.0f, 2.0f }};
     Transform transform_4 = {{ 5.0f, 3.0f, 5.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f }};
 
+    Mesh* mesh = mesh_cube_create();
     GameObject objects[] = {
-        game_object_cube_create(transform_1),
-        game_object_cube_create(transform_2),
-        game_object_cube_create(transform_3),
-        game_object_cube_create(transform_4)
+        game_object_cube_create(transform_1, mesh),
+        game_object_cube_create(transform_2, mesh),
+        game_object_cube_create(transform_3, mesh),
+        game_object_cube_create(transform_4, mesh)
     };
 
     Scene* scene = scene_create(objects, sizeof(objects)/sizeof(objects[0]));
@@ -45,6 +47,7 @@ int main() {
     } while(glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
     scene_destroy(scene);
+    mesh_destroy(mesh);
 
 	glfwTerminate();
     return 0;
